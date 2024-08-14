@@ -5,7 +5,7 @@ import Utility.Base;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HRM_002_Home_VerifyNavigationToAdminModule extends Base {
+public class HRM_002_Home_VerifyNavigationToAdminUserManagementModule extends Base {
     Home obj_Home;
 
     @Test

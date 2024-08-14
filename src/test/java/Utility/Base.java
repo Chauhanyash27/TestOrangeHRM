@@ -21,11 +21,12 @@ public class Base {
     public  void browserInitiator(){
         playwright = Playwright.create();
         browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
-        browserContext = browser.newContext();
+        browserContext = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get("myvideos/")));
         page = browserContext.newPage();
         page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         page.locator(usernameField).fill("Admin");
         page.locator(passwordField).fill("admin123");
+        page.pause();
         page.locator(loginButton).click();
     }
 //new Browser.NewContextOptions().setStorageStatePath(Paths.get("AutomaticLogin.json"))
