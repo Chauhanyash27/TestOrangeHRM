@@ -1,4 +1,4 @@
-package Pages;
+package Pages.Admin;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -6,7 +6,7 @@ import com.microsoft.playwright.options.AriaRole;
 
 import java.util.List;
 
-public class Admin_UserManagement {
+public class UserManagement {
 
     Page page;
     String recordCount = "//span[@class='oxd-text oxd-text--span']";
@@ -21,7 +21,7 @@ public class Admin_UserManagement {
     String allUserName ="//div[@role='row']//div[2]//div";
     Boolean flag;
 
-    public Admin_UserManagement(Page page){
+    public UserManagement(Page page){
         this.page = page;
     }
 

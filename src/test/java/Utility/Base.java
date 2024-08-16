@@ -3,7 +3,6 @@ package Utility;
 import com.microsoft.playwright.*;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
 import java.nio.file.Paths;
 
@@ -29,7 +28,7 @@ public class Base {
         page.pause();
         page.locator(loginButton).click();
     }
-//new Browser.NewContextOptions().setStorageStatePath(Paths.get("AutomaticLogin.json"))
+
     @AfterTest
     public void tearDown(){
         browserContext.close();
