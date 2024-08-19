@@ -5,6 +5,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
 import java.util.List;
+import java.util.Random;
 
 public class Job {
     Page page;
@@ -18,6 +19,7 @@ public class Job {
     String jobTitleField = "input:below(:text('Job Title'))";
     String jobDescriptionField = "textarea:below(:text('Job Description'))";
     String nameField = "input:below(:text('Name'))";
+    String shiftNameField = "input:below(:text('Shift Name'))";
 
     public Job(Page page){
         this.page = page;
@@ -47,10 +49,12 @@ public class Job {
     }
 
     public Boolean deleteUser(){
-        String getFirstRowColumnData = page.locator(allUser).nth(2).textContent();
-        page.locator("i[class='oxd-icon bi-trash']:right-of(:text('"+ getFirstRowColumnData +"'))");
+        List<String> allUsers = page.locator(allUser).allTextContents();
+        String randomUser = getRandomUser(allUsers);
+        page.locator("i[class='oxd-icon bi-trash']:right-of(:text('"+ randomUser +"'))").first().click();
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(" Yes, Delete")).click();
         Boolean deleteCountStatus = validateRecords();
-        Boolean afterDeletion = dataValidityAfterManipulation(getFirstRowColumnData,page.locator(allUser));
+        Boolean afterDeletion = dataValidityAfterManipulation(randomUser,page.locator(allUser));
         return (deleteCountStatus && afterDeletion);
     }
 
@@ -58,7 +62,7 @@ public class Job {
         flag=true;
         List<String> allUsersData = allUser.allTextContents();
         for(int i = 2; i< allUsersData.size(); i++){
-            if(Name.equalsIgnoreCase(allUsersData.get(i))){
+            if(Name.equals(allUsersData.get(i))){
                 flag = false; break;
             }
         }
@@ -81,9 +85,17 @@ public class Job {
         return !(dataValidityAfterManipulation(Name,page.locator(allUser)));
     }
 
+    public Boolean addWorkShifts(String shiftName){
+        page.click(addButton);
+        page.fill(shiftNameField, shiftName);
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save")).click();
+        return !(dataValidityAfterManipulation(shiftName,page.locator(allUser)));
+    }
+
     public Boolean editJobTitleRecord(){
-        String getFirstRowDataToEdit = page.locator(allUser).nth(2).textContent();
-        page.locator("i[class='oxd-icon bi-pencil-fill']:right-of(:text('"+ getFirstRowDataToEdit +"'))");
+        List<String> allUsers = page.locator(allUser).allTextContents();
+        String randomUser = getRandomUser(allUsers);
+        page.locator("i[class='oxd-icon bi-pencil-fill']:right-of(:text('"+ randomUser +"'))");
         page.locator(jobTitleField).clear();
         page.fill(jobTitleField,"Edited");
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save")).click();
@@ -91,11 +103,21 @@ public class Job {
     }
 
     public Boolean editRecord(){
-        String getFirstRowDataToEdit = page.locator(allUser).nth(2).textContent();
-        page.locator("i[class='oxd-icon bi-pencil-fill']:right-of(:text('"+ getFirstRowDataToEdit +"'))");
+        List<String> allUsers = page.locator(allUser).allTextContents();
+        String randomUser = getRandomUser(allUsers);
+        page.locator("i[class='oxd-icon bi-pencil-fill']:right-of(:text('"+ randomUser +"'))");
         page.locator(nameField).clear();
         page.fill(nameField,"Edited Record");
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save")).click();
         return !(dataValidityAfterManipulation("Edited Record",page.locator(allUser)));
+    }
+
+    public String getRandomUser(List<String> users) {
+        if (users == null || users.isEmpty()) {
+            return null;
+        }
+        Random random = new Random();
+        int index = random.nextInt(users.size());
+        return users.get(index);
     }
 }
