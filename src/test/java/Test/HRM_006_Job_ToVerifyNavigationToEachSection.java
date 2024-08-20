@@ -6,7 +6,7 @@ import Utility.JobSections;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HRM_006_Job_ToVerifyNavigationToEachSection extends Base {
+class HRM_006_Job_ToVerifyNavigationToEachSection extends Base {
     Job obj_Job;
 
     @Test

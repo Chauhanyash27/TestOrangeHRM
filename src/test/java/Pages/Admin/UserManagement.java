@@ -26,7 +26,7 @@ public class UserManagement {
     }
 
     public boolean userCountVerification(){
-//        page.click(adminModule);
+        page.click(adminModule);
         String userCount = page.locator(recordCount).first().textContent();
         int recordsFoundCount = Integer.parseInt(userCount.substring(userCount.indexOf('(')+1,userCount.indexOf(')')));
         int userRecordCount = page.locator(noOfRecords).count();
@@ -85,6 +85,5 @@ public class UserManagement {
         allUserNames.clear();
         return flag;
     }
-
 
 }
