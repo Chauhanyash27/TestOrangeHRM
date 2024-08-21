@@ -11,7 +11,7 @@ public class HRM_049_Organization_ToVerifyThatUserIsNotAbleToEditDetailsWithoutS
     Organization obj_Organization;
 
     @Test
-    public void ToVerifyThatUserIsNotAbleToEditDetailsWithoutSelectionEditCheckbox() {
+    public void ToVerifyThatUserIsNotAbleToEditDetailsWithoutSelectingEditCheckbox() {
         obj_Organization = new Organization(page);
         obj_Organization.navigateToSection(OrganizationSections.GeneralInformation.getSectionName());
         Assert.assertTrue(obj_Organization.fieldEnabledCheck());

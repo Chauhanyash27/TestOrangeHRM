@@ -84,7 +84,7 @@ public class Organization {
         return !(dataValidityAfterManipulation("Edited Record",page.locator(allUser)));
     }
 
-    public Boolean searchFunctionality(){
+    public Boolean performSearch(){
         List<String> allUsers = page.locator(allUser).allTextContents();
         String randomUser = getRandomUser(allUsers);
         page.locator(searchNameField).first().fill(randomUser);

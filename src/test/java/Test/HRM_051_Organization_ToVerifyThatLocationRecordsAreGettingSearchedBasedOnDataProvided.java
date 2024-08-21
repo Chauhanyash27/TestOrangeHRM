@@ -14,6 +14,6 @@ public class HRM_051_Organization_ToVerifyThatLocationRecordsAreGettingSearchedB
     public void ToVerifyThatLocationRecordsAreGettingSearchedBasedOnDataProvided() {
         obj_Organization = new Organization(page);
         obj_Organization.navigateToSection(OrganizationSections.Locations.getSectionName());
-        Assert.assertTrue(obj_Organization.searchFunctionality());
+        Assert.assertTrue(obj_Organization.performSearch());
     }
 }
