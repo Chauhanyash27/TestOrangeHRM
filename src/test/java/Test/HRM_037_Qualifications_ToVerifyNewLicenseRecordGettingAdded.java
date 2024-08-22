@@ -11,7 +11,7 @@ public class HRM_037_Qualifications_ToVerifyNewLicenseRecordGettingAdded extends
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyNewLicenseRecordGettingAdded(){
+    public void ToVerifyNewLicenseRecordGettingAdded() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Licenses.getSectionName());
         Assert.assertTrue(obj_Qualifications.addRecord("Testing Name"));

@@ -11,7 +11,7 @@ public class HRM_035_Qualifications_ToVerifyEducationRecordGettingEdited extends
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyEducationRecordGettingEdited(){
+    public void ToVerifyEducationRecordGettingEdited() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Education.getSectionName());
         Assert.assertTrue(obj_Qualifications.editRecord());

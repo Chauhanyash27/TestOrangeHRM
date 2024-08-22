@@ -14,21 +14,21 @@ public class Apply {
     String leaveTypeField = "//div[@class='oxd-select-text-input']";
     String sectionHeading = "//h6[@class ='oxd-text oxd-text--h6 orangehrm-main-title']";
 
-    public Apply(Page page){
+    public Apply(Page page) {
         this.page = page;
     }
 
-    public void clickApplySubmodule(){
+    public void clickApplySubmodule() {
         page.click(leaveModule);
         page.click(applySubmodule);
     }
 
-    public Boolean sectionNavigationVerification(String sectionName){
+    public Boolean sectionNavigationVerification(String sectionName) {
         String headingTitle = page.locator(sectionHeading).textContent();
         return (headingTitle.equals(sectionName));
     }
 
-    public void applyLeave(){
+    public void applyLeave() {
         clickApplySubmodule();
         page.click(leaveTypeField);
         page.locator("div").filter(new Locator.FilterOptions().setHasText(Pattern.compile("^-- Select --$"))).nth(2);

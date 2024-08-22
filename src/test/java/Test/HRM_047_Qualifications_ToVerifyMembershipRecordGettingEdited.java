@@ -11,7 +11,7 @@ public class HRM_047_Qualifications_ToVerifyMembershipRecordGettingEdited extend
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyMembershipRecordGettingEdited(){
+    public void ToVerifyMembershipRecordGettingEdited() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Memberships.getSectionName());
         Assert.assertTrue(obj_Qualifications.editRecord());

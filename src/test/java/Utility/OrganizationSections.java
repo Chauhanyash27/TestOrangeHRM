@@ -8,7 +8,7 @@ public enum OrganizationSections {
 
     public String Sections;
 
-    OrganizationSections(String Sections){
+    OrganizationSections(String Sections) {
         this.Sections = Sections;
     }
 

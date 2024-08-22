@@ -11,7 +11,7 @@ public class HRM_042_Qualifications_ToVerifyLanguageRecordGettingDeleted extends
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyLanguageRecordGettingDeleted(){
+    public void ToVerifyLanguageRecordGettingDeleted() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Languages.getSectionName());
         Assert.assertTrue(obj_Qualifications.deleteUser());

@@ -15,34 +15,34 @@ public class Organization {
     String orgNameField = "input:below(:text('Organization Name'))";
     String registrationNoField = "input:below(:text('Registration Number'))";
     String notesField = "input:below(:text('Notes'))";
-    String allUser ="//div[@role='row']//div[2]//div";
+    String allUser = "//div[@role='row']//div[2]//div";
     String searchNameField = "input:below(:text('Name'))";
     Boolean flag;
-    String addButton ="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']";
+    String addButton = "//button[@class='oxd-button oxd-button--medium oxd-button--secondary']";
     String nameField = "input:below(:text('Name'))";
     String recordCount = "//span[@class='oxd-text oxd-text--span']";
     String noOfRecords = "//div[@class='oxd-table-body']/div";
 
-    public Organization(Page page){
+    public Organization(Page page) {
         this.page = page;
     }
 
-    public void clickOrganizationSubmodule(){
+    public void clickOrganizationSubmodule() {
         page.click(adminModule);
         page.locator("li").filter(new Locator.FilterOptions().setHasText("Organization")).click();
     }
 
-    public void navigateToSection(String sectionName){
+    public void navigateToSection(String sectionName) {
         clickOrganizationSubmodule();
         page.getByRole(AriaRole.MENUITEM, new Page.GetByRoleOptions().setName(sectionName)).click();
     }
 
-    public Boolean sectionNavigationVerification(String sectionName){
+    public Boolean sectionNavigationVerification(String sectionName) {
         String headingTitle = page.locator(sectionHeading).textContent();
         return (headingTitle.equals(sectionName));
     }
 
-    public void editGeneralInformation(){
+    public void editGeneralInformation() {
         page.locator("label").filter(new Locator.FilterOptions().setHasText("Edit")).locator("span").click();
         page.locator(orgNameField).clear();
         page.locator(orgNameField).fill("Infostride");
@@ -53,15 +53,15 @@ public class Organization {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save")).click();
     }
 
-    public Boolean verifyGeneralInformation(){
+    public Boolean verifyGeneralInformation() {
         page.locator("label").filter(new Locator.FilterOptions().setHasText("Edit")).locator("span").click();
         String orgName = page.locator(orgNameField).textContent();
         String regNo = page.locator(registrationNoField).textContent();
         String notes = page.locator(notesField).textContent();
-        return ((orgName.equals("Infostride"))&&(regNo.equals("1234"))&&(notes.equals("Edited notes")));
+        return ((orgName.equals("Infostride")) && (regNo.equals("1234")) && (notes.equals("Edited notes")));
     }
 
-    public Boolean fieldEnabledCheck(){
+    public Boolean fieldEnabledCheck() {
         return (page.isDisabled(orgNameField) && page.isDisabled(registrationNoField));
     }
 
@@ -74,32 +74,33 @@ public class Organization {
         return users.get(index);
     }
 
-    public Boolean editRecord(){
+    public Boolean editRecord() {
         List<String> allUsers = page.locator(allUser).allTextContents();
         String randomUser = getRandomUser(allUsers);
-        page.locator("i[class='oxd-icon bi-pencil-fill']:right-of(:text('"+ randomUser +"'))");
+        page.locator("i[class='oxd-icon bi-pencil-fill']:right-of(:text('" + randomUser + "'))");
         page.locator(nameField).clear();
-        page.fill(nameField,"Edited Record");
+        page.fill(nameField, "Edited Record");
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save")).click();
-        return !(dataValidityAfterManipulation("Edited Record",page.locator(allUser)));
+        return !(dataValidityAfterManipulation("Edited Record", page.locator(allUser)));
     }
 
-    public Boolean performSearch(){
+    public Boolean performSearch() {
         List<String> allUsers = page.locator(allUser).allTextContents();
         String randomUser = getRandomUser(allUsers);
         page.locator(searchNameField).first().fill(randomUser);
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Search")).click();
-        return (dataValidityAfterManipulation(randomUser,page.locator(allUser)));
+        return (dataValidityAfterManipulation(randomUser, page.locator(allUser)));
     }
 
-    public Boolean dataValidityAfterManipulation(String Name, Locator allUser){
-        flag=false;
+    public Boolean dataValidityAfterManipulation(String Name, Locator allUser) {
+        flag = false;
         List<String> allUsersData = allUser.allTextContents();
-        for(int i = 2; i< allUsersData.size(); i++){
-            if(Name.equals(allUsersData.get(i))){
+        for (int i = 2; i < allUsersData.size(); i++) {
+            if (Name.equals(allUsersData.get(i))) {
                 flag = true;
+            } else {
+                flag = false;
             }
-            else {flag=false;}
         }
         allUsersData.clear();
         return flag;
@@ -114,20 +115,20 @@ public class Organization {
         return !(dataValidityAfterManipulation(Name, page.locator(allUser)));
     }
 
-    public boolean validateRecords(){
+    public boolean validateRecords() {
         String userCount = page.locator(recordCount).first().textContent();
-        int recordsFoundCount = Integer.parseInt(userCount.substring(userCount.indexOf('(')+1,userCount.indexOf(')')));
+        int recordsFoundCount = Integer.parseInt(userCount.substring(userCount.indexOf('(') + 1, userCount.indexOf(')')));
         int userRecordInTable = page.locator(noOfRecords).count();
         return (recordsFoundCount == userRecordInTable);
     }
 
-    public Boolean deleteUser(){
+    public Boolean deleteUser() {
         List<String> allUsers = page.locator(allUser).allTextContents();
         String randomUser = getRandomUser(allUsers);
-        page.locator("i[class='oxd-icon bi-trash']:right-of(:text('"+ randomUser +"'))").first().click();
+        page.locator("i[class='oxd-icon bi-trash']:right-of(:text('" + randomUser + "'))").first().click();
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(" Yes, Delete")).click();
         Boolean deleteCountStatus = validateRecords();
-        Boolean afterDeletion = dataValidityAfterManipulation(randomUser,page.locator(allUser));
+        Boolean afterDeletion = dataValidityAfterManipulation(randomUser, page.locator(allUser));
         return (deleteCountStatus && afterDeletion);
     }
 

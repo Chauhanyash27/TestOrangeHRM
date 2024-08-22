@@ -11,7 +11,7 @@ public class HRM_048_Organization_ToVerifyNavigationToEachSection extends Base {
     Organization obj_Organization;
 
     @Test
-    public void ToVerifyNavigationToEachSection(){
+    public void ToVerifyNavigationToEachSection() {
         obj_Organization = new Organization(page);
         obj_Organization.navigateToSection(OrganizationSections.GeneralInformation.getSectionName());
         Assert.assertTrue(obj_Organization.sectionNavigationVerification(OrganizationSections.GeneralInformation.getSectionName()));

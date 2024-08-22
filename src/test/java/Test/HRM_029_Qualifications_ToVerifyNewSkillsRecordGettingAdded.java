@@ -11,7 +11,7 @@ public class HRM_029_Qualifications_ToVerifyNewSkillsRecordGettingAdded extends 
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyNewSkillsRecordGettingAdded(){
+    public void ToVerifyNewSkillsRecordGettingAdded() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Skills.getSectionName());
         Assert.assertTrue(obj_Qualifications.addRecord("Testing Name"));

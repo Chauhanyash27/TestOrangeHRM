@@ -9,7 +9,7 @@ public class HRM_002_Home_VerifyNavigationToAdminUserManagementModule extends Ba
     Home obj_Home;
 
     @Test
-    public void VerifyNavigationToAdminModule(){
+    public void VerifyNavigationToAdminModule() {
         obj_Home = new Home(page);
         Assert.assertTrue(obj_Home.navigateToAdminModule());
     }

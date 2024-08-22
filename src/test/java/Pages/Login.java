@@ -11,17 +11,17 @@ public class Login {
     String accountDropdown = "//span[@class='oxd-userdropdown-tab']";
     String logoutOption = "//a[text()='Logout']";
 
-    public Login(Page page){
-        this.page= page;
+    public Login(Page page) {
+        this.page = page;
     }
 
     public void userLogin() throws InterruptedException {
-      page.locator(usernameField).fill("Admin");
-      page.locator(passwordField).fill("admin123");
-      page.locator(loginButton).click();
+        page.locator(usernameField).fill("Admin");
+        page.locator(passwordField).fill("admin123");
+        page.locator(loginButton).click();
     }
 
-    public Boolean verifySuccessfullLogin(){
+    public Boolean verifySuccessfullLogin() {
         page.locator(accountDropdown).click();
         Boolean status = page.locator(logoutOption).isVisible();
         return status;

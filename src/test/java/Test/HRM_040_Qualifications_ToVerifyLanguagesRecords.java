@@ -11,7 +11,7 @@ public class HRM_040_Qualifications_ToVerifyLanguagesRecords extends Base {
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyLanguagesRecords(){
+    public void ToVerifyLanguagesRecords() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Languages.getSectionName());
         Assert.assertTrue(obj_Qualifications.validateRecords());

@@ -11,7 +11,7 @@ public class HRM_043_Qualifications_ToVerifyLanguageRecordGettingEdited extends 
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyLanguageRecordGettingEdited(){
+    public void ToVerifyLanguageRecordGettingEdited() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Languages.getSectionName());
         Assert.assertTrue(obj_Qualifications.editRecord());

@@ -10,7 +10,7 @@ public class HRM_018_Job_ToVerifyEmploymentStatusRecordGettingEdited extends Bas
     Job obj_Job;
 
     @Test
-    public void ToVerifyEmploymentStatusRecordGettingEdited (){
+    public void ToVerifyEmploymentStatusRecordGettingEdited() {
         obj_Job = new Job(page);
         obj_Job.navigateToSection(JobSections.EmploymentStatus.getSectionName());
         Assert.assertTrue(obj_Job.editRecord());

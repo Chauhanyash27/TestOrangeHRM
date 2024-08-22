@@ -10,7 +10,7 @@ public class HRM_023_Job_ToVerifyWorkShiftsRecords extends Base {
     Job obj_Job;
 
     @Test
-    public void ToVerifyWorkShiftsRecords(){
+    public void ToVerifyWorkShiftsRecords() {
         obj_Job = new Job(page);
         obj_Job.navigateToSection(JobSections.WorkShifts.getSectionName());
         Assert.assertTrue(obj_Job.validateRecords());

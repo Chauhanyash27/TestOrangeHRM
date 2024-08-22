@@ -10,7 +10,7 @@ public class HRM_020_Job_ToVerifyNewJobCategoriesRecordGettingAdded extends Base
     Job obj_Job;
 
     @Test
-    public void ToVerifyNewJobCategoriesRecordGettingAdded(){
+    public void ToVerifyNewJobCategoriesRecordGettingAdded() {
         obj_Job = new Job(page);
         obj_Job.navigateToSection(JobSections.JobCategories.getSectionName());
         Assert.assertTrue(obj_Job.addRecord("Testing Record"));

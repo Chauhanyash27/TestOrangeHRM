@@ -11,7 +11,7 @@ public class HRM_038_Qualifications_ToVerifyLicenseRecordGettingDeleted extends 
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyLicenseRecordGettingDeleted(){
+    public void ToVerifyLicenseRecordGettingDeleted() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Licenses.getSectionName());
         Assert.assertTrue(obj_Qualifications.deleteUser());

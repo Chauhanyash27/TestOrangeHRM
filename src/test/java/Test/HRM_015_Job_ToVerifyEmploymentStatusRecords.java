@@ -10,7 +10,7 @@ public class HRM_015_Job_ToVerifyEmploymentStatusRecords extends Base {
     Job obj_Job;
 
     @Test
-    public void ToVerifyEmploymentStatusRecords(){
+    public void ToVerifyEmploymentStatusRecords() {
         obj_Job = new Job(page);
         obj_Job.navigateToSection(JobSections.EmploymentStatus.getSectionName());
         Assert.assertTrue(obj_Job.validateRecords());

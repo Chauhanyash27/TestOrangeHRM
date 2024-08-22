@@ -11,7 +11,7 @@ public class HRM_045_Qualifications_ToVerifyNewMembershipRecordGettingAdded exte
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyNewMembershipRecordGettingAdded(){
+    public void ToVerifyNewMembershipRecordGettingAdded() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Memberships.getSectionName());
         Assert.assertTrue(obj_Qualifications.addRecord("Testing Name"));

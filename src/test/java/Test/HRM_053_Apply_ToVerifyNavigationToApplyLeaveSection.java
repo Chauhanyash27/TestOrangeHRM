@@ -10,7 +10,7 @@ public class HRM_053_Apply_ToVerifyNavigationToApplyLeaveSection extends Base {
     Apply obj_Apply;
 
     @Test
-    public void ToVerifyNavigationToApplyLeaveSection(){
+    public void ToVerifyNavigationToApplyLeaveSection() {
         obj_Apply = new Apply(page);
         obj_Apply.clickApplySubmodule();
         Assert.assertTrue(obj_Apply.sectionNavigationVerification("Apply Leave"));

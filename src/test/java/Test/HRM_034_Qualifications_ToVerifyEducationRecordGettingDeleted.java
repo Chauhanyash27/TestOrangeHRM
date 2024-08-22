@@ -11,7 +11,7 @@ public class HRM_034_Qualifications_ToVerifyEducationRecordGettingDeleted extend
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyEducationRecordGettingDeleted(){
+    public void ToVerifyEducationRecordGettingDeleted() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Education.getSectionName());
         Assert.assertTrue(obj_Qualifications.deleteUser());

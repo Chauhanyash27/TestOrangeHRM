@@ -10,7 +10,7 @@ class HRM_006_Job_ToVerifyNavigationToEachSection extends Base {
     Job obj_Job;
 
     @Test
-    public void ToVerifyNavigationToEachSection(){
+    public void ToVerifyNavigationToEachSection() {
         obj_Job = new Job(page);
         obj_Job.navigateToSection(JobSections.JobTitles.getSectionName());
         Assert.assertTrue(obj_Job.sectionNavigationVerification(JobSections.JobTitles.getSectionName()));

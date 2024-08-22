@@ -10,7 +10,7 @@ public class HRM_012_Job_ToVerifyNewPayGradesRecordGettingAdded extends Base {
     Job obj_Job;
 
     @Test
-    public void ToVerifyNewPayGradesRecordGettingAdded(){
+    public void ToVerifyNewPayGradesRecordGettingAdded() {
         obj_Job = new Job(page);
         obj_Job.navigateToSection(JobSections.PayGrades.getSectionName());
         Assert.assertTrue(obj_Job.addRecord("Testing Record"));

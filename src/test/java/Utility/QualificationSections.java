@@ -10,7 +10,7 @@ public enum QualificationSections {
 
     public String Sections;
 
-    QualificationSections(String Sections){
+    QualificationSections(String Sections) {
         this.Sections = Sections;
     }
 

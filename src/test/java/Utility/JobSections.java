@@ -10,7 +10,7 @@ public enum JobSections {
 
     public String Sections;
 
-    JobSections(String Sections){
+    JobSections(String Sections) {
         this.Sections = Sections;
     }
 

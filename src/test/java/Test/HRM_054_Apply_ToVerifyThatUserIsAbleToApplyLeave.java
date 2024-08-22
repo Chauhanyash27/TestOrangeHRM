@@ -9,7 +9,7 @@ public class HRM_054_Apply_ToVerifyThatUserIsAbleToApplyLeave extends Base {
     Apply obj_Apply;
 
     @Test
-    public void ToVerifyThatUserIsAbleToApplyLeave(){
+    public void ToVerifyThatUserIsAbleToApplyLeave() {
         obj_Apply = new Apply(page);
         obj_Apply.applyLeave();
     }

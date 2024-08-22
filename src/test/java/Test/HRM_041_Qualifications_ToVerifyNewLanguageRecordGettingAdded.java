@@ -11,7 +11,7 @@ public class HRM_041_Qualifications_ToVerifyNewLanguageRecordGettingAdded extend
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyNewLanguageRecordGettingAdded(){
+    public void ToVerifyNewLanguageRecordGettingAdded() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Languages.getSectionName());
         Assert.assertTrue(obj_Qualifications.addRecord("Testing Name"));

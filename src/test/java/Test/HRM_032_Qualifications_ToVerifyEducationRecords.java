@@ -11,7 +11,7 @@ public class HRM_032_Qualifications_ToVerifyEducationRecords extends Base {
     Qualifications obj_Qualifications;
 
     @Test
-    public void ToVerifyEducationRecords(){
+    public void ToVerifyEducationRecords() {
         obj_Qualifications = new Qualifications(page);
         obj_Qualifications.navigateToSection(QualificationSections.Education.getSectionName());
         Assert.assertTrue(obj_Qualifications.validateRecords());
